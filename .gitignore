@@ -1,4 +1,4 @@
-node_modules/
-backend/uploads/
-.env
-fronted/dist/
+**/node_modules/
+**/uploads/
+**/.env
+**/dist/
