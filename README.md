@@ -1,77 +1,108 @@
 # KYC Verification System
 
-This is a project I built to learn how a KYC verification system works in a real-world application.
+A full-stack identity verification platform built to streamline user onboarding, document validation, and administrative approval workflows. Users can submit personal information alongside government ID proofs and selfies, receive a unique tracking ID, and monitor their verification status in real time.
 
-In this project, users can fill out a form with their personal details, upload an identity document and a selfie, and check their application status. There is also an admin panel where submitted applications can be checked and approved or rejected.
+---
 
-## Features
+## Application Preview
 
-### User
 
-- Fill out the KYC registration form
-- Enter personal details like name, date of birth, gender and address
-- Add mobile number and email
-- Select an ID proof (Aadhaar, PAN, Passport or Driving License)
-- Upload an identity document
-- Upload a selfie
-- Get a KYC application ID
-- Check application status
 
-### Admin
+---
 
-- Admin login
-- View all submitted applications
-- Check applicant details
-- View uploaded documents
-- Check face verification status
-- Approve or reject applications
-- View pending, approved and rejected applications
-- Refresh the application list
+## Key Features
 
-## Technologies Used
+### User Workflow
+- Structured Onboarding Form: Collects personal details (Name, DOB, Gender, Address) along with contact information (Mobile, Email).
+- Multi-ID Support: Supports Aadhaar, PAN, Passport, and Driving License selection with ID number input.
+- Secure File Uploads: Handles identity document and selfie uploads using Multer with format validation.
+- Real-Time Status Tracking: Generates a unique KYC Application ID upon submission so applicants can check Pending, Approved, or Rejected statuses anytime.
 
-**Frontend**
-- React.js
-- JavaScript
-- HTML
-- CSS
+### Admin Workflow
+- Dedicated Admin Login: Restricts verification controls to authorized administrators.
+- Centralized Application Queue: View and refresh all submitted applications filtered by Pending, Approved, and Rejected states.
+- Document & Selfie Inspection: Review applicant details, uploaded ID documents, and selfie verification status before approving or rejecting requests.
 
-**Backend**
-- Node.js
-- Express.js
-- Multer
-- CORS
+---
 
-**Database**
-- MySQL
+## Tech Stack
 
-## How It Works
+- Frontend: React.js, JavaScript (ES6+), HTML5, CSS3
+- Backend: Node.js, Express.js, Multer, CORS
+- Database: MySQL
 
-1. A user opens the KYC form and enters their details.
-2. The user selects an ID proof and enters its number.
-3. The user uploads the document and a selfie.
-4. The form data is sent to the backend.
-5. The application details are saved in MySQL.
-6. The admin logs in and checks the submitted application.
-7. After reviewing the details, the admin can approve or reject it.
-8. The user can check the application status using their application ID.
+---
+
+## System Architecture
+
+1. Data Submission: User fills out the React form and uploads an ID document and selfie via multipart/form-data.
+2. Backend Processing: Express and Multer validate the file formats, store the files, and save applicant records in MySQL with a Pending status.
+3. ID Generation: The server generates a unique KYC Application ID and returns it to the user.
+4. Admin Verification: Admin logs into the dashboard, inspects the uploaded documents and selfie status, and updates the record to Approved or Rejected.
+5. Status Lookup: User queries their Application ID to view the real-time verification decision.
+
+---
 
 ## Folder Structure
 
 ```text
 KYC-Verification-System/
-│
-├── frontend/
-├── backend/
-└── README.md
+├── frontend/          # React.js client application
+├── backend/           # Node.js & Express REST API + Multer file handling
+└── README.md          # Project documentation
 ```
 
-## What I Learned
+---
 
-While building this project, I got practical experience with React, Node.js, Express, MySQL and file uploads. I also learned how frontend and backend communicate through APIs and how application data is stored and managed.
+## Local Setup & Installation
+
+### Prerequisites
+- Node.js (v16+)
+- MySQL Server
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com
+cd kyc-verification-system
+```
+
+### 2. Database Setup
+Open your MySQL client and create the database:
+```sql
+CREATE DATABASE kyc_db;
+```
+(Import your MySQL tables into kyc_db before starting the backend server.)
+
+### 3. Backend Setup
+```bash
+cd backend
+npm install
+```
+Create a `.env` file inside the `backend/` folder with your database credentials:
+```env
+PORT=5000
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your_mysql_password
+DB_NAME=kyc_db
+```
+Start the backend server:
+```bash
+npm start
+```
+
+### 4. Frontend Setup
+```bash
+cd ../frontend
+npm install
+npm start
+```
+The app will run locally at `http://localhost:3000`.
+
+---
 
 ## Developer
+Ram Kumar  
+- GitHub: https://github.com/poddarram46  
+- LinkedIn: https://www.linkedin.com/in/ram-poddar-815ab9322
 
-Ram Kumar
-
-GitHub: https://github.com/poddarram46
